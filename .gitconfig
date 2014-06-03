@@ -1,0 +1,17 @@
+[alias]
+	st = status
+  ci = commit
+  cia = commit -am
+	co = checkout
+	br = branch
+
+  ##
+  ## Creates an alias called "git hist" that outputs a nicely formatted git log.
+  ## Usage is just like "git log"
+  ## Examples:
+  ##   git hist
+  ##   git hist -5
+  ##   git hist <branch_name>
+  ##   git hist <tag_name> -10
+  ###
+  hist = log --pretty=format:'%C(yellow)%ad%C(reset) %C(green)%h%C(reset) | %C(red)%s %C(bold red)[%an]%C(reset) %C(white)%d%C(reset)' --graph --date=short
