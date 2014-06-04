@@ -1,6 +1,6 @@
 [alias]
-	st = status
-  ci = commit
+	st = status -s
+  ci = commit -m
   cia = commit -am
 	co = checkout
 	br = branch
@@ -15,3 +15,15 @@
   ##   git hist <tag_name> -10
   ###
   hist = log --pretty=format:'%C(yellow)%ad%C(reset) %C(green)%h%C(reset) | %C(red)%s %C(bold red)[%an]%C(reset) %C(white)%d%C(reset)' --graph --date=short
+[push]
+  default = current
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+[color "status"]
+	header = white
+[color "branch"]
+	current = red normal bold
