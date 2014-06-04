@@ -21,15 +21,17 @@ function current_branch {
 }
 
 function git_ps1 {
-  [[ -d '.git' ]] && GIT_PS1=$(current_branch)
-  if [ $(expr length $GIT_PS1) -gt $MAX_BRANCH_LENGTH ]; then
-    GIT_PS1="${GIT_PS1:0:${MAX_BRANCH_LENGTH-2}}.."
+  if [ -d '.git' ]; then
+    GIT_PS1=$(current_branch)
+    if [ $(expr length $GIT_PS1) -gt $MAX_BRANCH_LENGTH ]; then
+      GIT_PS1="${GIT_PS1:0:${MAX_BRANCH_LENGTH-2}}.."
+    fi
+    echo " [${GIT_PS1}]"
   fi
-  echo "[${GIT_PS1}]"
 }
 
 function prompt_command {
-  export PS1="${DIR_COLOR}\W ${BRANCH_COLOR}$(git_ps1) ${NORMAL}\$ "
+  export PS1="${DIR_COLOR}\W${BRANCH_COLOR}$(git_ps1) ${NORMAL}\$ "
   # export PS1=$(~/bin/bash_prompt)
 }
 
