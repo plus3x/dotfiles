@@ -20,7 +20,9 @@ function current_branch {
 }
 
 function git_ps1 {
-  [[ -d '.git' ]] && echo "[$(current_branch)]"
+  [[ -d '.git' ]] && GIT_PS1=$(current_branch)
+  [[ $(expr length $GIT_PS1) -gt 20 ]] && GIT_PS1="${GIT_PS1:0:18}.."
+  echo "[${GIT_PS1}]"
 }
 
 function prompt_command {
