@@ -14,6 +14,7 @@ PURPLE="\[\033[35;1m\]"
 
    DIR_COLOR=$YELLOW
 BRANCH_COLOR=$WHITE
+MAX_BRANCH_LENGTH=20
 
 function current_branch {
   git rev-parse --abbrev-ref HEAD
@@ -21,7 +22,9 @@ function current_branch {
 
 function git_ps1 {
   [[ -d '.git' ]] && GIT_PS1=$(current_branch)
-  [[ $(expr length $GIT_PS1) -gt 20 ]] && GIT_PS1="${GIT_PS1:0:18}.."
+  if [ $(expr length $GIT_PS1) -gt $MAX_BRANCH_LENGTH ]; then
+    GIT_PS1="${GIT_PS1:0:${MAX_BRANCH_LENGTH-2}}.."
+  fi
   echo "[${GIT_PS1}]"
 }
 
