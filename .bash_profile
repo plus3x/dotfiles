@@ -1,6 +1,4 @@
-
-export LANGUAGE='en_US.UTF-8'
-export LC_ALL='en_US.UTF-8'
+[[ -z "$TMUX" ]] && exec tmux
 
  RESET="\[\017\]"
 NORMAL="\[\033[0m\]"
@@ -32,8 +30,10 @@ function git_ps1 {
 
 function prompt_command {
   export PS1="${DIR_COLOR}\W${BRANCH_COLOR}$(git_ps1) ${NORMAL}\$ "
+  [[ -d "bin" ]] && PATH="bin:$PATH"
   # export PS1=$(~/bin/bash_prompt)
 }
 
+export LANGUAGE='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
 export PROMPT_COMMAND=prompt_command
-
