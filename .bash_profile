@@ -10,8 +10,8 @@ PURPLE="\[\033[35;1m\]"
   CYAN="\[\033[36;1m\]"
  WHITE="\[\033[37;1m\]"
 
-   DIR_COLOR=$YELLOW
-BRANCH_COLOR=$WHITE
+   DIR_COLOR=$BLUE
+BRANCH_COLOR=$GREEN
 MAX_BRANCH_LENGTH=20
 
 function current_branch {
@@ -20,11 +20,12 @@ function current_branch {
 
 function git_ps1 {
   if [ -d '.git' ]; then
-    GIT_PS1=$(current_branch)
-    if [ $(expr length $GIT_PS1) -gt $MAX_BRANCH_LENGTH ]; then
-      GIT_PS1="${GIT_PS1:0:${MAX_BRANCH_LENGTH-2}}.."
+    BRANCH=$(current_branch)
+    BRANCH_LENGTH=$(echo ${#BRANCH})
+    if [[ $BRANCH_LENGTH -gt $MAX_BRANCH_LENGTH ]]; then
+      BRANCH="${BRANCH:0:${MAX_BRANCH_LENGTH-2}}.."
     fi
-    echo " [${GIT_PS1}]"
+    echo " [${BRANCH}]"
   fi
 }
 
