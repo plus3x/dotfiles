@@ -4,6 +4,7 @@
   cia = commit -am
 	co = checkout
 	br = branch
+  undo = reset --soft HEAD~1
 
   ##
   ## Creates an alias called "git hist" that outputs a nicely formatted git log.
@@ -16,14 +17,28 @@
   ###
   hist = log --pretty=format:'%C(yellow)%ad%C(reset) %C(green)%h%C(reset) | %C(red)%s %C(bold red)[%an]%C(reset) %C(white)%d%C(reset)' --graph --date=short
 [push]
-  default = current
+	default = current
 [color]
-	ui = auto
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+	ui = true
 [color "status"]
+	changed = yellow normal
+	untracked = white normal bold
+	added = green normal bold
+	deleted = red normal bold
 	header = white
-[color "branch"]
-	current = red normal bold
+	footer = red
+	bottom = red
+	result = red
+[config "status"]
+	header = red
+[core]
+	excludesfile = ~/.gitignore
+[user]
+	name = Vladislav Petrov
+	email = electronicchest@gmail.com
+[credential]
+	helper = osxkeychain
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
