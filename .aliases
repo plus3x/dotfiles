@@ -1,0 +1,65 @@
+alias ln='ln -v'
+alias mkdir='mkdir -p'
+alias ...='../..'
+alias l='ls'
+alias ll='ls -al'
+alias lh='ls -Alh'
+# alias -g G='| grep'
+# alias -g M='| less'
+# alias -g L='| wc -l'
+# alias -g ONE="| awk '{ print \$1}'"
+alias e="$EDITOR"
+alias v="$VISUAL"
+
+# git
+alias gci="git pull --rebase && rake && git push"
+alias gitinspect="~/Downloads/gitinspector-0.3.2/gitinspector/gitinspector.py"
+alias gitreport="gitinspect -rTF html"
+
+# Bundler
+alias b="bundle"
+
+# Tests and Specs
+alias t="ruby -I test"
+
+# Rails
+alias migrate="bin/rake db:migrate db:rollback && bin/rake db:migrate"
+alias m="migrate"
+
+# heroku
+alias export_env_from_heroku="for s in `heroku config -s`; do export $s; done"
+
+# Ruby
+alias rk="bin/rake"
+alias s="bin/rspec"
+alias cuke="APP=~/Documents/athens/builds/Release-autotest-iphonesimulator/Classroom.app NO_RESET_SIMULATOR=true bin/cucumber -t @vpetrov -t ~@wip -s -x"
+alias cuke_report="APP=~/Documents/athens/builds/Release-autotest-iphonesimulator/Classroom.app NO_RESET_SIMULATOR=true cucumber -t @report -t ~@wip -i -s -f html -o report.html -f pretty"
+alias cuke_setup="APP=~/Documents/athens/builds/Release-autotest-iphonesimulator/Classroom.app NO_RESET_SIMULATOR=true bin/cucumber -t @setup -s -x"
+alias cuke_assignments="APP=~/Documents/athens/builds/Release-autotest-iphonesimulator/Classroom.app NO_RESET_SIMULATOR=true cucumber -t @assignments -t ~@wip -s -x "
+alias cuke_announcements="APP=~/Documents/athens/builds/Release-autotest-iphonesimulator/Classroom.app NO_RESET_SIMULATOR=true cucumber -t @announcements -t ~@wip -s -x "
+alias cuke_grades="APP=~/Documents/athens/builds/Release-autotest-iphonesimulator/Classroom.app NO_RESET_SIMULATOR=true cucumber -t @grades -t ~@wip -s -x "
+alias cuke_syllabus="APP=~/Documents/athens/builds/Release-autotest-iphonesimulator/Classroom.app NO_RESET_SIMULATOR=true cucumber -t @syllabus -t ~@wip -s -x"
+alias cuke_login="APP=~/Documents/athens/builds/Release-autotest-iphonesimulator/Classroom.app NO_RESET_SIMULATOR=true cucumber -t @login -t ~@wip -s -x"
+alias cuke_tag="APP=~/Documents/athens/builds/Release-autotest-iphonesimulator/Classroom.app NO_RESET_SIMULATOR=true cucumber -t ~@wip -s -x -t "
+
+# Include custom aliases
+[[ -f ~/.aliases.local ]] &&  ~/.aliases.local
+
+# xcode stuff
+alias ba='xcodebuild -workspace Classroom.xcworkspace -scheme autotest -configuration Debug-autotest -sdk iphonesimulator SYMROOT=~/Documents/athens/builds'
+alias bar='xcodebuild -workspace Classroom.xcworkspace -scheme autotest -configuration Release-autotest -sdk iphonesimulator SYMROOT=~/Documents/athens/builds'
+alias bam='xcodebuild -workspace Classroom.xcworkspace -scheme autotest-mock -configuration Debug-autotest-mock -sdk iphonesimulator clean build SYMROOT=~/Documents/athens/builds'
+alias bamr='xcodebuild -workspace Classroom.xcworkspace -scheme autotest-mock -configuration Release-autotest-mock -sdk iphonesimulator clean build SYMROOT=~/Documents/athens/builds'
+
+# appium
+# alias appium='appium --no-reset --command-timeout 3600 --session-override'
+
+# Android
+export ANDROID_HOME="~/Library/Android/sdk/"
+alias uiautomatorviewer="$ANDROID_HOME/tools/uiautomatorviewer"
+
+# Genymotion
+alias geny='/Applications/Genymotion.app/Contents/MacOS/player --vm-name "Google Nexus 6 - 5.1.0 - API 22 - 1440x2560" > /dev/null &'
+
+# Jenkins
+alias jenkins="open vnc://84.17.24.10"
