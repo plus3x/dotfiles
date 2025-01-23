@@ -1,9 +1,11 @@
 [alias]
-	st = status -s
+  st = status -s
   ci = commit -m
   cia = commit -am
-	co = checkout
-	br = branch
+  ca = git commit --amend
+  caa = git commit --amend --all
+  co = checkout
+  br = branch
   undo = reset --soft HEAD~1
 
   ##
@@ -17,28 +19,28 @@
   ###
   hist = log --pretty=format:'%C(yellow)%ad%C(reset) %C(green)%h%C(reset) | %C(red)%s %C(bold red)[%an]%C(reset) %C(white)%d%C(reset)' --graph --date=short
 [push]
-	default = current
+  default = current
 [color]
-	ui = true
+  ui = true
 [color "status"]
-	changed = yellow normal
-	untracked = white normal bold
-	added = green normal bold
-	deleted = red normal bold
-	header = white
-	footer = red
-	bottom = red
-	result = red
+  changed = yellow normal
+  untracked = white normal bold
+  added = green normal bold
+  deleted = red normal bold
+  header = white
+  footer = red
+  bottom = red
+  result = red
 [config "status"]
-	header = red
+  header = red
 [core]
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
 [user]
-	name = Vladislav Petrov
-	email = electronicchest@gmail.com
+  name = Vladislav Petrov
+  email = electronicchest@gmail.com
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
+  clean = git lfs clean %f
+  smudge = git lfs smudge %f
+  required = true
